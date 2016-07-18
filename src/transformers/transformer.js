@@ -1,46 +1,58 @@
 "use strict";
 
+/**
+ * transforms data for frontend presentation
+ * @see tests
+ */
 module.exports = function (ads) {
-    var propertyKeys = new Set();
-    var featureKeys = new Set();
-    var titles = [];
-    var images = [];
-    ads.forEach(ad=> {
-        //create property keys
-        Object.keys(ad.params)
-            .forEach((property)=>propertyKeys.add(property));
-        //create feature keys
-        ad.features
-            .forEach((feature)=>featureKeys.add(feature));
-        //extract titles
-        titles.push(ad.title);
-        images.push(ad.img);
-    });
+    if (Array.isArray(ads)) {
+        var propertyKeys = new Set();
 
-    let props = {};
-    props["Tytuł"] = titles;
-
-    propertyKeys = Array.from(propertyKeys).sort();
-    propertyKeys.forEach(key => {
-        var arr = [];
+        var featureKeys = new Set();
+        var titles = [];
+        var images = [];
         ads.forEach(ad=> {
-            arr.push(ad.params[key] ? ad.params[key] : "");
+            //create property keys
+            Object.keys(ad.params)
+                .forEach((property)=>propertyKeys.add(property));
+
+            //create feature keys
+            if(ad.features) {
+                ad.features
+                    .forEach((feature)=>featureKeys.add(feature));
+            }
+
+            //extract titles
+            titles.push(ad.title);
+            images.push(ad.img);
         });
-        props[key] = arr;
-    });
 
-    featureKeys = Array.from(featureKeys).sort();
-    featureKeys.forEach(key => {
-        var arr = [];
-        ads.forEach(ad=> {
-            arr.push(ad.features.indexOf(key) > -1 ? "TAK" : "NIE");
+        let props = {};
+        props["Tytuł"] = titles;
+
+        propertyKeys = Array.from(propertyKeys).sort();
+        propertyKeys.forEach(key => {
+            var arr = [];
+            ads.forEach(ad=> {
+                arr.push(ad.params[key] ? ad.params[key] : "");
+            });
+            props[key] = arr;
         });
-        props[key] = arr;
-    });
+
+        featureKeys = Array.from(featureKeys).sort();
+        featureKeys.forEach(key => {
+            var arr = [];
+            ads.forEach(ad=> {
+                arr.push(ad.features.indexOf(key) > -1 ? "TAK" : "NIE");
+            });
+            props[key] = arr;
+        });
 
 
-    return Promise.resolve({
-        properties: props,
-        images: images
-    });
+        return Promise.resolve({
+            properties: props,
+            images: images
+        });
+    }
+    return ads;
 }

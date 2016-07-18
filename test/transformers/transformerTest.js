@@ -11,4 +11,8 @@ describe('transformer test', function () {
         .then(result => assert.deepEqual(result, after));
     });
 
+    it('should not fail on empty result', function () {
+        return transformer({});
+    });
+
 });

@@ -6,7 +6,7 @@ const url = require('url'),
 
 module.exports = {
     extractHost(link) {
-        return url.parse(link).host.split('.')[0];
+        return url.parse(link).host.replace('www.','').split('.')[0];
     },
     fileReaderPromise(dirname, file){
         return new Promise(function (resolve, reject) {
@@ -16,4 +16,17 @@ module.exports = {
             });
         })
     }
+};
+
+Object.prototype.renameProperty = function (oldName, newName) {
+    // Do nothing if the names are the same
+    if (oldName == newName) {
+        return this;
+    }
+    // Check for the old property name to avoid a ReferenceError in strict mode.
+    if (this.hasOwnProperty(oldName)) {
+        this[newName] = this[oldName];
+        delete this[oldName];
+    }
+    return this;
 };

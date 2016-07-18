@@ -11,23 +11,18 @@ router.get('/', function (req, res, next) {
 
 var request = require('good-guy-http')();
 var fetcher = require('../src/http/fetchAds');
-var extractor = require('../src/extractors/otomoto')
+var extractors = require('../src/extractors/extractors')
 var transformer = require('../src/transformers/transformer');
 
 
 router.get('/compare', function (req, res, next) {
     fetcher({request})(req.query.links.split(','))
-        .then(extractor)
+        .then(extractors)
         .then(transformer)
         .then((result)=> {
             res.render('comparator', result);
         })
-        .catch(err => {
-            console.error(err);
-            res.sendStatus(500);
-        }
-
-    )
+        .catch(err => next(err));
 });
 
 module.exports = router;

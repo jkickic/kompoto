@@ -9,7 +9,7 @@ describe("otomoto extractor tests", function () {
 
     it('should extract data', function () {
         return util.fileReaderPromise(__dirname, 'resources/otomotoAd.htm')
-            .then(result => {return [{body:result}]})
+            .then(result => {return [{body:result, statusCode:200}]})
             .then(otomotoExtractor)
             .then(data => {
                 var ad = data[0];

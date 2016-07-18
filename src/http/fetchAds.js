@@ -10,8 +10,9 @@ module.exports = function ({request}) {
         return request(link)
             .then(result => Object.assign(result, {host: util.extractHost(link)}))
             .catch(function (error) {
-            return {statusCode: 404};
-        })
+                console.error(error);
+                return {statusCode: 404};
+            })
     }
 
     return function (links) {

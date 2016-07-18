@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require('express');
 var router = express.Router();
 
@@ -18,10 +20,14 @@ router.get('/compare', function (req, res, next) {
         .then(extractor)
         .then(transformer)
         .then((result)=> {
-            "use strict";
             res.render('comparator', result);
         })
-        .catch(err => res.sendStatus(500))
+        .catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        }
+
+    )
 });
 
 module.exports = router;

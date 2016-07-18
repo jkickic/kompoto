@@ -1,0 +1,21 @@
+<table class="table table-inverse">
+    <thead>
+    <th class="row">
+    </th>
+    {{#each images}}
+        <th class="row">
+            <img width="300px" src="{{this}}"/>
+        </th>
+    {{/each}}
+    </thead>
+    <tbody>
+    {{#each properties}}
+        <tr class="row">
+            <td class="key">{{@key}}</td>
+            {{#each this}}
+                <td class="{{getTdClass this}}">{{this}}</td>
+            {{/each}}
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

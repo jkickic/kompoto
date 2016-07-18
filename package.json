@@ -7,6 +7,10 @@
     "infrastructure": "node infrastructure/heroku.js",
     "test": "mocha --recursive test"
   },
+  "engines": {
+    "node": "6.2.3",
+    "npm": "3.9.5"
+  },
   "dependencies": {
     "body-parser": "1.15.1",
     "cheerio": "0.20.0",

@@ -8,7 +8,10 @@ var baseConf = {
     region: 'eu',
     maintenance: false,
     stack: 'cedar-14',
-    config_vars: {PORT: '3000'},
+    config_vars: {
+        PORT: '3000',
+        KEEP_ALIVE: 'false'
+    },
     addons: {
         logentries: {plan: 'logentries:le_tryit'},
         librato: {plan: 'librato:development'}
@@ -28,6 +31,10 @@ var baseConf = {
 
 var prodConf = {
     name: 'kompoto-prod',
+    config_vars: {
+        PORT: '3000',
+        KEEP_ALIVE: 'true'
+    },
 };
 
 configurator(process.env.NODE_ENV === 'production' ? Object.assign(baseConf, prodConf) : baseConf);

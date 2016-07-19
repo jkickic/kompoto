@@ -1,2 +1,9 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+
+<form method="get" action="/compare">
+    <fieldset class="form-group">
+        <label for="links">Linki separowane przecinkami</label>
+        <textarea class="form-control" id="links" rows="3" name="links"></textarea>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

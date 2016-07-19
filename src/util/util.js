@@ -2,7 +2,8 @@
 
 const url = require('url'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    request = require('good-guy-http')();
 
 module.exports = {
     extractHost(link) {
@@ -15,6 +16,13 @@ module.exports = {
                 else resolve(data);
             });
         })
+    },
+    keepHerokuAlive(){
+        if(process.env.HEROKU_APP_NAME){
+            setInterval(function() {
+                request.get(`http://${process.env.HEROKU_APP_NAME}.herokuapp.com`);
+            }, 300000);
+        }
     }
 };
 

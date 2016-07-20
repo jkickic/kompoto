@@ -7,24 +7,25 @@ const assert = require('assert'),
 
 describe("allegro extractor tests", function () {
 
-    it.skip('should extract data', function () {
-        return util.fileReaderPromise(__dirname, 'resources/allegroAd.htm')
-            .then(result => {return {body:result}})
+    it('should extract data', function () {
+        return util.fileReaderPromise(__dirname, 'resources/aventador.htm')
+            .then(result => {return {body:result, statusCode:200}})
             .then(allegroExtractor)
             .then(ad => {
-                assert.equal(ad.title, "VOLVO S60 2.0 D3 SE LUX 2010R SUMMUM 80TYŚ.KM.");
-                assert.equal(Object.keys(ad.params).length, 16);
-                assert.equal(ad.params["Moc"], "163 KM");
-                assert.equal(ad.features.length, 26);
+                assert.equal(ad.img, "http://d.allegroimg.pl/s400/08/63/26/61/34/6326613485");
+                assert.equal(ad.title, "LAMBORGHINI AVENTADOR LP-750 SV AUTO NA MIEJSCU !! (6326613485)");
+                assert.equal(Object.keys(ad.params).length, 14);
+                assert.equal(ad.params["moc [KM]"], "751");
+                assert.equal(ad.features.length, 41);
             });
     });
 
-    it.skip('should skip 404 result', function () {
-        return util.fileReaderPromise(__dirname, 'resources/otomotoAd.htm')
+    it('should skip 404 result', function () {
+        return util.fileReaderPromise(__dirname, 'resources/aventador.htm')
             .then(() => {return [{statusCode:404}]})
             .then(allegroExtractor)
             .then(data => {
-                assert.equal(data.length, 0);
+                assert.deepEqual(data, {});
             });
     });
 });

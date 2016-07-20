@@ -3,8 +3,11 @@ var heroin = require('heroin-js');
 var configurator = heroin(process.env.HEROKU_API_TOKEN, {debug: false});
 configurator.addPlugin(require('heroin-js-librato').plugin);
 
+const KOMPOTO_TEST = 'kompoto-test';
+const KOMPOTO_PROD = 'kompoto-prod';
+
 var baseConf = {
-    name: 'kompoto-test',
+    name: KOMPOTO_TEST,
     region: 'eu',
     maintenance: false,
     stack: 'cedar-14',
@@ -30,7 +33,7 @@ var baseConf = {
 };
 
 var prodConf = {
-    name: 'kompoto-prod',
+    name: KOMPOTO_PROD,
     config_vars: {
         PORT: '3000',
         KEEP_ALIVE: 'true'
@@ -38,3 +41,11 @@ var prodConf = {
 };
 
 configurator(process.env.NODE_ENV === 'production' ? Object.assign(baseConf, prodConf) : baseConf);
+
+function configurePipeline() {
+    return configurator.pipeline({
+        name: 'kompoto',
+        apps: {staging: KOMPOTO_TEST, production: KOMPOTO_PROD}
+    });
+}
+configurePipeline();

@@ -24,18 +24,20 @@ module.exports = {
         "Rok produkcji": [
             "",
             "2013"
-        ],
+        ]
+    },
+    "features": {
         "Immobilizer": [
-            "TAK",
-            "TAK"
+            true,
+            true
         ],
         "Radio fabryczne": [
-            "TAK",
-            "NIE"
+            true,
+            false
         ],
         "Tuner TV": [
-            "NIE",
-            "TAK"
+            false,
+            true
         ]
     }
 }

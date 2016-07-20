@@ -10,6 +10,10 @@ module.exports = function(){
         hbs.registerHelper('hasFeatureOrNot', function(data) {
             return !!data ? "✔" : "✘";
         });
+
+        hbs.registerHelper('rowDifferences', function(identical) {
+            return identical ? "" : "rowDifferences";
+        });
     }
 
     return {

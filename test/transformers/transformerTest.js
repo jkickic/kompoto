@@ -1,8 +1,8 @@
 "use strict";
 const assert = require('assert'),
     transformer = require('../../src/transformers/transformer.js'),
-    before = require('./resources/before'),
-    after = require('./resources/after');
+    before = require('./resources/beforeTransform'),
+    after = require('./resources/afterTransform');
 
 describe('transformer test', function () {
 

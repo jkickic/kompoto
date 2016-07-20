@@ -1,5 +1,4 @@
 "use strict";
-const util = require('../util/util');
 
 module.exports = function ({request}) {
     function requests(links) {
@@ -8,7 +7,7 @@ module.exports = function ({request}) {
 
     function neverFailingRequest(link) {
         return request(link)
-            .then(result => Object.assign(result, {host: util.extractHost(link)}))
+            .then(result => Object.assign(result, {link: link}))
             .catch(function (error) {
                 console.error(error);
                 return {statusCode: 404};

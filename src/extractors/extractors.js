@@ -1,6 +1,7 @@
 "use strict";
-const olxMapper = require('../mappers/olx');
-const allegroMapper = require('../mappers/allegro');
+const util = require('../util/util')
+const olxMapper = require('../mappers/olx'),
+    allegroMapper = require('../mappers/allegro');
 
 const otomotoExtractor = require('./otomoto'),
     allegroExtractor = require('./allegro')(allegroMapper),
@@ -13,8 +14,9 @@ module.exports = function (data) {
         allegro: {host: 'allegro', extractor: allegroExtractor}
     }
     return data.map(item => {
-        if(extractors[item.host]){
-            return extractors[item.host].extractor(item);
+        var host = util.extractHost(item.link);
+        if (extractors[host]) {
+            return extractors[host].extractor(item);
         }
         throw new Error("Unsupported ad provider - " + item.host);
     });

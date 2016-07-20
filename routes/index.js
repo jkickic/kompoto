@@ -12,14 +12,15 @@ router.get('/', function (req, res, next) {
 var request = require('good-guy-http')();
 var fetcher = require('../src/http/fetchAds');
 var extractors = require('../src/extractors/extractors')
+var identicalEnhancer = require('../src/transformers/enhancers/identical');
 var transformer = require('../src/transformers/transformer');
 
 
 router.get('/compare', function (req, res, next) {
-    console.log(req.query.links);
     fetcher({request})(req.query.links)
         .then(extractors)
         .then(transformer)
+        .then(identicalEnhancer)
         .then((result)=> {
             res.render('comparator', result);
         })

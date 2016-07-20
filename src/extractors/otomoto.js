@@ -9,6 +9,7 @@ module.exports = function (body) {
         result.title = $('title').text().trim();
         result.params = {};
         result.img = $('.bigImage')[0].attribs.src;
+        result.link = body.link;
 
         let valuesExtractor = (value)=> {
             var $local = cheerio.load(values[i], {ignoreWhitespace: true});

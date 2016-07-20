@@ -11,6 +11,7 @@ module.exports = function (mapper) {
             result.params = {};
             result.img = $('#gallery')
                 .find('img.img-responsive')[0].attribs['src'];
+            result.link = body.link;
 
             let paramExtractor = (e)=> {
                 let tuple = $(e).find('span');

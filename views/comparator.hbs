@@ -5,16 +5,26 @@
     </th>
     {{#each images}}
         <th class="row">
-            <img width="300px" src="{{this}}"/>
+            <img src="{{this}}"/>
         </th>
     {{/each}}
     </thead>
     <tbody>
+    <tr class="row">
+        <td class="key">Tytuł</td>
+        {{#each titles}}
+            <td class="">
+                <a href="{{lookup ../links @index}}" target="_blank">
+                    {{this}}
+                </a>
+            </td>
+        {{/each}}
+    </tr>
     {{#each properties}}
-        <tr class="row">
+        <tr class="row {{rowDifferences this.identical}}">
             <td class="key">{{@key}}</td>
-            {{#each this}}
-                <td class="">{{this}}</td>
+            {{#each this.data}}
+                <td class="">{{this.value}}</td>
             {{/each}}
         </tr>
     {{/each}}
@@ -29,10 +39,10 @@
     </thead>
     <tbody>
     {{#each features}}
-        <tr class="row">
+        <tr class="row {{rowDifferences this.identical}}">
             <td class="key">{{@key}}</td>
-            {{#each this}}
-                <td class="{{getFeatureClass this}}">{{hasFeatureOrNot this}}</td>
+            {{#each this.data}}
+                <td class="{{getFeatureClass this.value}} feature">{{hasFeatureOrNot this.value}}</td>
             {{/each}}
         </tr>
     {{/each}}

@@ -11,7 +11,8 @@ module.exports = [
             "Immobilizer",
             "Radio fabryczne"
         ],
-        "img": "http://img1.jpg"
+        "img": "http://img1.jpg",
+        "link": "http://link1"
     },
     {
         "title": "Używane Volvo S60 - 59 900 PLN, 55 140 km, 2013 - otomoto.pl",
@@ -25,6 +26,7 @@ module.exports = [
             "Immobilizer",
             "Tuner TV"
         ],
-        "img": "http://img2.jpg"
+        "img": "http://img2.jpg",
+        "link": "http://link2"
     }
 ]

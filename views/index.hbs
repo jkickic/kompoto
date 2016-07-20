@@ -1,24 +1,23 @@
 <h1>{{title}}</h1>
-
+<div class="container p-t-2">
 <form method="get" action="/compare">
-    <fieldset class="form-group">
-        <label for="links">Linki separowane przecinkami (wspierane otomoto i olx)</label>
-        <textarea class="form-control" id="links" rows="3" name="links"></textarea>
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div class="addedLinks">
 
-<div class="addedLinks">
-
-</div>
-<form method="get" action"/compare">
-    <fieldset class="links">
-        <div class="linkInput">
-            <input type="text">
+    </div>
+    <fieldset class="">
+    <div class="row links">
+        <div class="linkInput input-group col-lg-8">
+            <input class="form-control" type="text" placeholder="Please paste link here a click add button.">
             </input>
-            <button type="button" onClick='onLinkAdd()'>+
-            </button>
+            <span class="input-group-btn">
+                    <button class="btn btn-default" onClick="onLinkAdd()" type="button">+</button>
+            </span>
         </div>
+    </div>
     </fieldset>
-
+    <div class="row p-t-2">
+    <div class="col-lg-4">
+    <button type="submit" class="btn btn-primary">Submit</button></div>
+    </div>
 </form>
+</div>

@@ -16,7 +16,8 @@ var transformer = require('../src/transformers/transformer');
 
 
 router.get('/compare', function (req, res, next) {
-    fetcher({request})(req.query.links.split(','))
+    console.log(req.query.links);
+    fetcher({request})(req.query.links)
         .then(extractors)
         .then(transformer)
         .then((result)=> {

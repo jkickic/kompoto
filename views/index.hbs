@@ -1,23 +1,25 @@
-<h1>{{title}}</h1>
 <div class="container p-t-2">
-<form method="get" action="/compare">
-    <div class="addedLinks">
+    <h1>{{title}}</h1>
 
-    </div>
-    <fieldset class="">
-    <div class="row links">
-        <div class="linkInput input-group col-lg-8">
-            <input class="form-control" type="text" placeholder="Please paste link here a click add button.">
-            </input>
+    <form method="get" action="/compare">
+        <div class="addedLinks">
+
+        </div>
+        <fieldset class="">
+            <div class="row links">
+                <div class="linkInput input-group col-lg-8">
+                    <input class="form-control" type="text" placeholder="Please paste link here a click add button.">
+                    </input>
             <span class="input-group-btn">
                     <button class="btn btn-default" onClick="onLinkAdd()" type="button">+</button>
             </span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row p-t-2">
+            <div class="col-lg-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-    </div>
-    </fieldset>
-    <div class="row p-t-2">
-    <div class="col-lg-4">
-    <button type="submit" class="btn btn-primary">Submit</button></div>
-    </div>
-</form>
+    </form>
 </div>

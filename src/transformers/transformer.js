@@ -39,18 +39,20 @@ module.exports = function (ads) {
             props[key] = arr;
         });
 
+        let features = {};
         featureKeys = Array.from(featureKeys).sort();
         featureKeys.forEach(key => {
             var arr = [];
             ads.forEach(ad=> {
-                arr.push(ad.features.indexOf(key) > -1 ? "TAK" : "NIE");
+                arr.push(ad.features.indexOf(key) > -1 ? true : false);
             });
-            props[key] = arr;
+            features[key] = arr;
         });
 
 
         return Promise.resolve({
             properties: props,
+            features: features,
             images: images
         });
     }

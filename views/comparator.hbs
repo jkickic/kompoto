@@ -1,6 +1,7 @@
-<table class="table table-inverse">
+<table class="table table-striped table-inverse">
     <thead>
     <th class="row">
+        <h2>Parametry</h2>
     </th>
     {{#each images}}
         <th class="row">
@@ -13,7 +14,25 @@
         <tr class="row">
             <td class="key">{{@key}}</td>
             {{#each this}}
-                <td class="{{getTdClass this}}">{{this}}</td>
+                <td class="">{{this}}</td>
+            {{/each}}
+        </tr>
+    {{/each}}
+    </tbody>
+    <thead>
+    <th class="row">
+        <h2>Wyposażenie</h2>
+    </th>
+    {{#each images}}
+        <th class="row"/>
+    {{/each}}
+    </thead>
+    <tbody>
+    {{#each features}}
+        <tr class="row">
+            <td class="key">{{@key}}</td>
+            {{#each this}}
+                <td class="{{getFeatureClass this}}">{{hasFeatureOrNot this}}</td>
             {{/each}}
         </tr>
     {{/each}}

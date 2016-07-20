@@ -1,7 +1,8 @@
 "use strict";
 const assert = require('assert'),
     fs = require('fs'),
-    allegroExtractor = require('../../src/extractors/allegro'),
+    allegroMapper = require('../../src/mappers/allegro'),
+    allegroExtractor = require('../../src/extractors/allegro')(allegroMapper),
     util = require('../../src/util/util');
 
 
@@ -15,7 +16,7 @@ describe("allegro extractor tests", function () {
                 assert.equal(ad.img, "http://d.allegroimg.pl/s400/08/63/26/61/34/6326613485");
                 assert.equal(ad.title, "LAMBORGHINI AVENTADOR LP-750 SV AUTO NA MIEJSCU !! (6326613485)");
                 assert.equal(Object.keys(ad.params).length, 14);
-                assert.equal(ad.params["moc [KM]"], "751");
+                assert.equal(ad.params["Moc"], "751");
                 assert.equal(ad.features.length, 41);
             });
     });

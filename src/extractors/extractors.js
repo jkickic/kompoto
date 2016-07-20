@@ -1,8 +1,9 @@
 "use strict";
 const olxMapper = require('../mappers/olx');
+const allegroMapper = require('../mappers/allegro');
 
 const otomotoExtractor = require('./otomoto'),
-    allegroExtractor = require('./allegro'),
+    allegroExtractor = require('./allegro')(allegroMapper),
     olxExtractor = require('./olx')(olxMapper);
 
 module.exports = function (data) {

@@ -48,4 +48,6 @@ function configurePipeline() {
         apps: {staging: KOMPOTO_TEST, production: KOMPOTO_PROD}
     });
 }
-configurePipeline();
+if (process.env.NODE_ENV != 'production'){
+    configurePipeline();
+}

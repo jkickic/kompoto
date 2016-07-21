@@ -1,20 +1,18 @@
 "use strict";
 
-var express = require('express');
-var router = express.Router();
+const request = require('good-guy-http')({timeout:10000, maxResponseSize: 1024*1024*5});
+const fetcher = require('../src/http/fetchAds');
+const extractors = require('../src/extractors/extractors')
+const identicalEnhancer = require('../src/transformers/enhancers/identical');
+const transformer = require('../src/transformers/transformer');
+
+const express = require('express');
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'KOMPOTO - nienajgorsza porównywarka ogłoszeń z otomoto'});
 });
-
-
-var request = require('good-guy-http')();
-var fetcher = require('../src/http/fetchAds');
-var extractors = require('../src/extractors/extractors')
-var identicalEnhancer = require('../src/transformers/enhancers/identical');
-var transformer = require('../src/transformers/transformer');
-
 
 router.get('/compare', function (req, res, next) {
     fetcher({request})(req.query.links)
@@ -25,6 +23,10 @@ router.get('/compare', function (req, res, next) {
             res.render('comparator', result);
         })
         .catch(err => next(err));
+});
+
+router.get('/ping', function(req,res,next){
+    res.json({health:"up"});
 });
 
 module.exports = router;

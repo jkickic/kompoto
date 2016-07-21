@@ -8,6 +8,3 @@ const server = require('../src/server'),
     util = require('../src/util/util');
 
 server().listen();
-if(process.env.KEEP_ALIVE=="true"){
-    util.keepHerokuAlive();
-}

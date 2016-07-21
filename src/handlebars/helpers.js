@@ -12,7 +12,7 @@ module.exports = function(){
         });
 
         hbs.registerHelper('rowDifferences', function(identical) {
-            return identical ? "" : "rowDifferences";
+            return identical ? "rowIdentical" : "rowDifferences";
         });
     }
 

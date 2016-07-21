@@ -37,7 +37,7 @@ module.exports = function (body) {
         let features = $('.offer-features__item');
         for (var i = 0; i < features.length; i++) {
             if (features[i] && features[i].children[2]) {
-                result.features.push(features[i].children[2].data.trim());
+                result.features.push(features[i].children[2].data.trim().toLowerCase());
             }
         }
         return result;

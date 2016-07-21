@@ -7,7 +7,7 @@ const url = require('url'),
 
 module.exports = {
     extractHost(link) {
-        return url.parse(link).host.replace('www.','').split('.')[0];
+        return url.parse(link).host.replace('www.', '').split('.')[0];
     },
     fileReaderPromise(dirname, file){
         return new Promise(function (resolve, reject) {
@@ -16,13 +16,6 @@ module.exports = {
                 else resolve(data);
             });
         })
-    },
-    keepHerokuAlive(){
-        if(process.env.HEROKU_APP_NAME){
-            setInterval(function() {
-                request.get(`http://${process.env.HEROKU_APP_NAME}.herokuapp.com`);
-            }, 300000);
-        }
     }
 };
 

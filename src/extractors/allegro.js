@@ -41,7 +41,7 @@ module.exports = function (mapper) {
                 if (tuple.length == 1) {
                     let rawFeatures = $(tuple[0]).text().split(",");
                     for (var i = 0; i < rawFeatures.length; i++) {
-                        result.features.push(rawFeatures[i].trim())
+                        result.features.push(rawFeatures[i].trim().toLowerCase())
                     }
                 }
             };

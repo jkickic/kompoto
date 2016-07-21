@@ -12,5 +12,7 @@ describe('enhancers', function(){
         assert.deepEqual(enhancer(afterTransform), afterEnhance);
     });
 
-
+    it('should resolve to input when no properties found', function(){
+        assert.deepEqual(enhancer({}), {});
+    });
 });

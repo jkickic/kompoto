@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+if(process.env.NEW_RELIC_LICENSE_KEY){
+    require('newrelic');
+}
+
 const server = require('../src/server'),
     util = require('../src/util/util');
 

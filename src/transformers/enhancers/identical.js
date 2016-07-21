@@ -6,6 +6,9 @@ var enhanced = function (item) {
     return Object.assign(item, {identical: size == 1});
 }
 module.exports = function (data) {
+    if(!data || !data.properties || !data.features){
+        return data;
+    }
     const propertyKeys = Object.keys(data.properties);
     propertyKeys.forEach(key=> {
         data.properties[key] = enhanced(data.properties[key]);

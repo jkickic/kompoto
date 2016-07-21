@@ -36,7 +36,8 @@ var prodConf = {
     name: KOMPOTO_PROD,
     config_vars: {
         PORT: '3000',
-        KEEP_ALIVE: 'true'
+        KEEP_ALIVE: 'true',
+        NEW_RELIC_LICENSE_KEY: process.env.NEW_RELIC_LICENSE_KEY
     },
 };
 

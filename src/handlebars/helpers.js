@@ -1,22 +1,22 @@
 "use strict";
 
-module.exports = function(){
-    let registerHelpers = function(hbs) {
-        "use strict";
-        hbs.registerHelper('getFeatureClass', function(data) {
-            return !!data ? "hasFeature" : "noFeature";
-        });
+var registerHelpers = function (hbs) {
+    "use strict";
+    hbs.registerHelper('getFeatureClass', function (data) {
+        return !!data ? "hasFeature" : "noFeature";
+    });
 
-        hbs.registerHelper('hasFeatureOrNot', function(data) {
-            return !!data ? "✔" : "✘";
-        });
+    hbs.registerHelper('hasFeatureOrNot', function (data) {
+        return !!data ? "✔" : "✘";
+    });
 
-        hbs.registerHelper('rowDifferences', function(identical) {
-            return identical ? "rowIdentical" : "rowDifferences";
-        });
-    }
+    hbs.registerHelper('rowDifferences', function (identical) {
+        return identical ? "rowIdentical" : "rowDifferences";
+    });
 
-    return {
-        registerHelpers: registerHelpers
-    }
-}
+    hbs.registerPartial('sidebar', `<div id="sidebar" class="affix">
+                                            ITEM
+                                        </div>`);
+};
+
+module.exports = registerHelpers;

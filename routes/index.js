@@ -11,7 +11,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {title: 'KOMPOTO - porównywarka ogłoszeń z otomoto, allegro, olx'});
+    res.render('index', {title: 'Kompoto - porównywarka ogłoszeń otomoto,allegro,olx'});
 });
 
 router.get('/compare', function (req, res, next) {

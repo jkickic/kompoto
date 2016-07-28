@@ -1,6 +1,7 @@
 "use strict";
 
-const request = require('good-guy-http')({timeout:10000, maxResponseSize: 1024*1024*5});
+//const request = require('good-guy-http')({timeout:10000, maxResponseSize: 1024*1024*5});
+const request = require('request');
 const fetcher = require('../src/http/fetchAds');
 const extractors = require('../src/extractors/extractors')
 const identicalEnhancer = require('../src/transformers/enhancers/identical');

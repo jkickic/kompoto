@@ -17,7 +17,8 @@ var baseConf = {
     },
     addons: {
         logentries: {plan: 'logentries:le_tryit'},
-        librato: {plan: 'librato:development'}
+        librato: {plan: 'librato:development'},
+        cloudamqp: {plan: 'cloudamqp:lemur'}
     },
     collaborators: ['mateusz.zajac@schibsted.pl'],
     features: {
